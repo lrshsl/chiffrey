@@ -1,39 +1,56 @@
+const output_element = document.getElementById("output");
+const input_element = document.getElementById("source-input");
+const input_text = input_element.value;
+
+const selected_mode = document.getElementById("mode-select").value;
+const radix = document.getElementById("radix-input").value;
+const delimiter = document.getElementById("delimiter-input").value;
+const prefix = document.getElementById("prefix-input").value;
+const suffix = document.getElementById("suffix-input").value;
+const invert = false;
+
 function exec_translate() {
-    const output_element = document.getElementById("output");
-    const input_element = document.getElementById("source-input");
-    const input_text = input_element.value;
     // Short cirquit if there is no input
     if (input_text.length === 0) {
       output_element.textContent = "No input";
       return;
     }
   
-    // Get references to the other needed elements or their content
-    const selected_mode = document.getElementById("mode-select").value;
-    const radix = document.getElementById("radix-input").value;
-    const delimiter = document.getElementById("delimiter-input").value;
-    const prefix = document.getElementById("prefix-input").value;
-    const suffix = document.getElementById("suffix-input").value;
-    const invert = false;
-  
     // Translate according to the mode
     let output = ["No mode selected"];
-    let base1 = false;
+    str = str.toLowerCase();
+    const ascii_code_a = "a".charCodeAt();
+    let base_index = ascii_code_a;
     switch (selected_mode) {
-      case "ascii":
-        if (invert) {
-          output = ascii_to_text(input_text);
-        } else {
-          output = text_to_ascii(input_text);
-        }
+      case "ascii":   /* base_index stays 97 ('a') */
+        break;
+      case "0index":
+        base_index = 0;
         break;
       case "1index":
-        base1 = true; // no break!
-      case "0index":
-        output = get_indices(input_text, base1);
+        base_index = 1;
         break;
     }
+    output = [...str].map((s) => s.charCodeAt() - base_index);
+
+    // let base1 = false;
+    // switch (selected_mode) {
+    //   case "ascii":
+    //     if (invert) {
+    //       output = ascii_to_text(input_text);
+    //     } else {
+    //       output = text_to_ascii(input_text);
+    //     }
+    //     break;
+    //   case "1index":
+    //     base1 = true; // no break!
+    //   case "0index":
+    //     output = text_to_indices_in_alph(input_text, base1);
+    //     break;
+    // }
+
   
+    // Write output to the page
     output_element.textContent =
       prefix + output.join(suffix + delimiter + prefix) + suffix;
   }
@@ -51,7 +68,7 @@ function exec_translate() {
     return ascii.map((n) => String.fromCharCode(n));
   }
   
-  function get_indices(str, base1) {
+  function text_to_indices_in_alph(str, base1) {
     base = "a".charCodeAt() - base1;
     str = str.toLowerCase();
     return [...str].map((s) => s.charCodeAt() - base);
