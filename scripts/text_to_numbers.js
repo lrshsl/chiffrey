@@ -12,26 +12,33 @@ const invert = false;
 function exec_translate() {
     // Short cirquit if there is no input
     if (input_text.length === 0) {
-      output_element.textContent = "No input";
+      console.log('other');
+      output_element.textContent = "Nothing";
       return;
     }
+    console.log("some");
   
     // Translate according to the mode
-    let output = ["No mode selected"];
-    str = str.toLowerCase();
+    let output_chars = ["No mode selected"];
     const ascii_code_a = "a".charCodeAt();
     let base_index = ascii_code_a;
     switch (selected_mode) {
-      case "ascii":   /* base_index stays 97 ('a') */
+      case "ascii":
+        output_chars = text_to_ascii();
         break;
-      case "0index":
-        base_index = 0;
-        break;
-      case "1index":
-        base_index = 1;
-        break;
+      default:
+        switch (selected_mode) {
+        case "ascii_only_text":                         // TODO
+          break;   /* base_index stays 97 ('a') */
+        case "0index":
+          base_index = 0;
+          break;
+        case "1index":
+          base_index = 1;
+          break;
+        }
     }
-    output = [...str].map((s) => s.charCodeAt() - base_index);
+    output_chars = [...str].map((ch) => String.isAlpha(ch)? ch.charCodeAt(): ch - base_index);
 
     // let base1 = false;
     // switch (selected_mode) {
@@ -52,7 +59,7 @@ function exec_translate() {
   
     // Write output to the page
     output_element.textContent =
-      prefix + output.join(suffix + delimiter + prefix) + suffix;
+      prefix + output_chars.join(suffix + delimiter + prefix) + suffix;
   }
   
   function text_to_ascii(str) {

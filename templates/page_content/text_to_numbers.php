@@ -4,6 +4,7 @@
     <!-- Nice textarea from bootstrap -->
     <textarea id="source-input" placeholder="Enter the source text/code here" style="height:100px;border-radius:15px;" cols="1000" class="form-control"></textarea>
     <label for="source-input">Source Text</label>
+
   </div>
 </div>
 
@@ -61,3 +62,6 @@
 <div id="outputbox" title="Text entered in the above <Source Field> will be displayed here after clicking on <Translate>" class="center">
   <span id="output"></span>
 </div>
+
+<link rel="stylesheet" href="style/text_to_numbers.css">
+<script src="scripts/text_to_numbers.js"></script>
