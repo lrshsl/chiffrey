@@ -1,8 +1,8 @@
-<div id="inputbox" class="center"></textarea>
+<div class="center inputbox"></textarea>
   <div class="form-floating">
 
     <!-- Nice textarea from bootstrap -->
-    <textarea id="source-input" placeholder="Enter the source text/code here" style="height:100px;border-radius:15px;" cols="1000" class="form-control"></textarea>
+    <textarea id="source-input" title="Enter the source text/code here" style="height:100px;border-radius:15px;" cols="1000" class="form-control"></textarea>
     <label for="source-input">Source Text</label>
 
   </div>
@@ -21,7 +21,7 @@
   </div>
 
   <!-- 'Translate' Button -->
-  <button id="translate-btn" onclick="exec_translate()" class="col-2">Translate</button>
+  <button onclick="exec_translate()" class="col-2 translate-btn">Translate</button>
 
   <!-- More Settings -->
   <div class="col-4" style="text-align: center">
@@ -59,8 +59,8 @@
 </div>
 
 <!-- Output -->
-<div id="outputbox" title="Text entered in the above <Source Field> will be displayed here after clicking on <Translate>" class="center">
-  <span id="output"></span>
+<div title="Text entered in the above <Source Field> will be displayed here after clicking on <Translate>" class="center outputbox">
+  <span class="output"></span>
 </div>
 
 <link rel="stylesheet" href="style/text_to_numbers.css">

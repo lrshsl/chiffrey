@@ -1,0 +1,83 @@
+:root {
+  --default-short-input-width: 5px;
+}
+
+
+/* Tag Selectors */
+div {
+  border-radius: 25px;
+}
+
+nav {
+  background-color: aliceblue;
+}
+
+button,
+input,
+select {
+  border-radius: 1000px;
+  margin: 0 5px;
+  width: 170px;
+}
+
+/* Class Selectors */
+.tool_panel {
+  padding: 12px 5px 5px;
+  border-radius: 20px;
+  background-color: lightblue;
+  width: 90%;
+  margin: auto;
+}
+
+.short-input {
+  width: var(--default-short-input-width);
+  width: 10px;
+}
+
+.mid-sized-input {
+  max-width: 150px;
+}
+
+.light {
+  font-size: 70%;
+}
+
+/* Specifications to classes */
+div.center {
+  border: 2px solid darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* More specific to this very website */
+
+div.inputbox {
+  width: 90%;
+  border: 2px solid #0f0;
+  margin: 3% 5% 3%;
+  padding: 20px;
+}
+
+div.outputbox {
+  width: 90%;
+  height: fit-content;
+  min-height: 35px;
+  border: 2px solid #0f0;
+  margin: 3% 5% 3%;
+}
+
+.output {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: fit-content;
+  white-space: auto;
+}
+
+.translate-btn {
+  text-align: center;
+}

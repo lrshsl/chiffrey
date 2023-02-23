@@ -6,14 +6,20 @@
     <a class="nav-link" id="nav-tab_caesar-vigenere" data-bs-toggle="tab" data-bs-target="#nav_caesar-vigenere" type="button" role="tab" aria-controls="nav_caesar-vigenere" aria-selected="false">Caesar && Vigenère</a>
   </div>
 </nav>
+
 <div class="tab-content" id="nav-tabContent">
+
   <div class="tab-pane fade show active" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
-      <h2>title</h2>
+    <h2>title</h2>
+    <p>description</p>
   </div>
+
   <div class="tab-pane fade" id="nav_text-to-numbers" role="tabpanel" aria-labelledby="nav-tab_text_to_numbers" tabindex="0">
-      <?php include "templates/page_content/text_to_numbers.php" ?>
+    <?php include "templates/page_content/text_to_numbers.php" ?>
   </div>
+
   <div class="tab-pane fade" id="nav_caesar-vigenere" role="tabpanel" aria-labelledby="nav-tab_caesar-vigenere" tabindex="0">
-      <p>pasapapd</p>
+    <?php include "templates/page_content/caesar_vigenere.php" ?>
   </div>
+
 </div>
