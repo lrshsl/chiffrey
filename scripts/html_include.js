@@ -2,31 +2,27 @@
 html_include();
 
 function html_include() {
-    var z, i, elmnt, file, xhttp;
+    var element, file, xhttp;
 
-    /* Loop through a collection of all HTML elements: */
-    all_elements = document.getElementsByTagName("*");
-
-    for (i = 0; i < all_elements.length; i++) {
-        elmnt = all_elements[i];
-        /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("w3-include-html");
-        if (!file) {
-            return;
-        }
-        /* Make an HTTP request using the attribute value as the file name: */
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /* Remove the attribute, and call this function once more: */
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
+    // Execute `source(e)` for all elements with the `html-include` attribute
+    include_elements = Array.from(document.querySelectorAll("*"))
+        .filter(function(e) {
+            e.getAttribute("html-include")})
+        .forEach(function(e) {
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.status == 200) {e.innerHTML = this.responseText;}
+                if (this.status == 200) {e.innerHTML = "Error 418: I'm a teapot"}
             }
-        }
-        xhttp.open("GET", file, true);
-        xhttp.send();
-    }
+            xhttp.open("GET", e.)
+        });
+
+    // for (var i = 0; i < include_elements.length; i++) {
+    //     element = include_elements[i];
+    //     console.log(element);
+
+    //     // xhttp.send();
+    //     return;
+    // }
 }
 
