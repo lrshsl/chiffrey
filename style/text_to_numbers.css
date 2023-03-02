@@ -4,6 +4,6 @@
 }
 
 #more-settings input[type="checkbox"] {
-  width: var(--default-short-input-width);
+  background-color: greenyellow;
 }
  

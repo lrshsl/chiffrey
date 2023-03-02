@@ -1,5 +1,5 @@
 :root {
-  --default-short-input-width: 5px;
+  --default-short-input-width: 50px;
 }
 
 
@@ -31,7 +31,6 @@ select {
 
 .short-input {
   width: var(--default-short-input-width);
-  width: 10px;
 }
 
 .mid-sized-input {

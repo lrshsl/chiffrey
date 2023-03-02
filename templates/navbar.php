@@ -10,8 +10,8 @@
 <div class="tab-content" id="nav-tabContent">
 
   <div class="tab-pane fade show active" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
-    <h2>title</h2>
-    <p>description</p>
+    <h2>Welcome</h2>
+    <p>This is a basic and functional website for anything with text convertion/encoding.</p>
   </div>
 
   <div class="tab-pane fade" id="nav_text-to-numbers" role="tabpanel" aria-labelledby="nav-tab_text_to_numbers" tabindex="0">

@@ -26,12 +26,16 @@
   <!-- Key -->
   <div class="col-4" style="text-align: center">
     <!-- Caesar Key -->
-    <label for="caesar_key_input" class="key-input short-input">Key </label>
-    <input type="number" id="caesar_key_input">
+    <div id="caesar-key-container">
+      <label for="caesar-key-input">Key </label>
+      <input type="number" id="caesar-key-input" class="short-input">
+    </div>
 
     <!-- Vigenere Key -->
-    <label for="vigenere_key_input" class="key-input short-input">Key </label>
-    <input type="text" id="vigenere_key_input">
+    <div id="vigenere-key-container">
+      <label for="vigenere-key-input">Key </label>
+      <input type="text" id="vigenere-key-input" class="short-input">
+    </div>
   </div>
 </div>
 
