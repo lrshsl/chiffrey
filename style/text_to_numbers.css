@@ -3,7 +3,3 @@
   text-align: right;
 }
 
-#more-settings input[type="checkbox"] {
-  width: var(--default-short-input-width);
-}
- 
