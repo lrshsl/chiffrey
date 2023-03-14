@@ -1,9 +1,9 @@
 
 function exec_translate() {
-  const input_element = document.getElementById("source-input");
+  const input_element = document.getElementById("nt-source-input");
   const input_text = input_element.value;
 
-  const selected_mode = document.getElementById("mode-select").value;
+  const selected_mode = document.getElementById("nt-mode-select").value;
   const radix = document.getElementById("radix-input").value;
   const invert = false;
 
