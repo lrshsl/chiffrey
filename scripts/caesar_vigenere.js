@@ -1,17 +1,11 @@
 const selected_mode = document.querySelector("#cv-mode-select").value;
+const output_element = document.querySelector("#cv-output");
 document.getElementById("cv-source-input");
 
 
 function exec_encode() {
-    console.log("sent");
-    write_output("sie");
+    output_element.textContent = "No Input";
     return;
 }
 
-
-// Util/IO functions
-function write_output(out) {
-    const output_element = document.getElementsByClassName("cv-output");
-    output_element.textContent = out;
-}
 
