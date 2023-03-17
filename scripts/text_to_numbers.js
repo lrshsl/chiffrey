@@ -26,7 +26,10 @@ function exec_translate() {
     case "1index":
       base_index = 1;
   }
-  output_chars = [...input_text].map((ch) => is_alpha(ch)? ch.charCodeAt() - 'a'.charCodeAt() + base_index: ch);
+  output_chars = [...input_text].map((ch) => !is_alpha(ch)? ch: ch.charCodeAt() - 'a'.charCodeAt() + base_index);
+
+    // Apply radix
+    output_chars = output_chars.map((ch) => ch.toString(radix));
 
   // Write output to the page
   write_output(output_chars);
