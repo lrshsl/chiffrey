@@ -1,21 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Include bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
+    <!-- Include style sheets -->
     <link rel="stylesheet" href="style/main_style_sheet.css">
+    <link rel="stylesheet" href="style/text_to_numbers.css">
 
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Chiffres && Codes</title>
+    <title>Chiffres &amp;&amp; Codes</title>
 </head>
+
 <body>
 
-    <?php include "templates/navbar.php" ?>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist" style="justify-content: center">
+            <a class="nav-link" id="nav-tab_home" data-bs-toggle="tab" data-bs-target="#nav_home" type="button"
+                role="tab" aria-controls="nav_home" aria-selected="true">Home</a>
+            <a class="nav-link" id="nav-tab_text-to-numbers" data-bs-toggle="tab" data-bs-target="#nav_text-to-numbers"
+                type="button" role="tab" aria-controls="nav_text_to_numbers" aria-selected="false">Text to numbers</a>
+            <a class="nav-link active" id="nav-tab_caesar-vigenere" data-bs-toggle="tab"
+                data-bs-target="#nav_caesar-vigenere" type="button" role="tab" aria-controls="nav_caesar-vigenere"
+                aria-selected="false">Caesar &amp;&amp; Vigenère</a>
+        </div>
+    </nav>
+
+    <!-- Navbar content -->
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
+            <h2>title</h2>
+            <p>description</p>
+        </div>
+
+
+        <!-- Text to numbers page -->
+        <div class="tab-pane fade" id="nav_text-to-numbers" role="tabpanel" aria-labelledby="nav-tab_text_to_numbers"
+            tabindex="0">
+
+            <!-- Text to numbers -->
+            <div id="page-text-to-numbers">
+                <div class="center inputbox">
+                    <div class="form-floating">
+
+                        <!-- Nice textarea from bootstrap -->
+                        <textarea id="nt-source-input" title="Enter the source text/code here"
+                            style="height:100px;border-radius:15px;" cols="1000" class="form-control"></textarea>
+                        <label for="nt-source-input">Source Text</label>
+
+                    </div>
+                </div>
+
+                <div class="tool_panel row align-items-start justify-content-evenly">
+
+                    <!-- Mode Input -->
+                    <div class="col-4">
+                        <label for="nt-mode-select" style="margin-right: 2px">Mode:</label>
+                        <select name="nt-mode-select" id="nt-mode-select" class="mid-sized-input">
+                            <option value="ascii">ascii representation</option>
+                            <option value="0index" selected="selected">index in alphabet</option>
+                            <option value="1index">index in alphabet (1 based)</option>
+                        </select>
+                    </div>
+
+                    <!-- 'Translate' Button -->
+                    <button type="button" onclick="exec_translate()" class="col-2 translate-btn">Translate</button>
+
+                    <!-- More Settings -->
+                    <div class="col-4" style="text-align: center">
+
+                        <!-- Collapse Toggle -->
+                        <div onclick="toggle_more_settings()" style="text-align: left" data-bs-toggle="collapse"
+                            data-bs-target="#more-settings" aria-expanded="false" aria-controls="more-settings">
+                            <label id="more-settings-arrow">&gt;</label>
+                            <label for="more-settings-arrow" id="more-settings-label">More Settings</label>
+                        </div>
+
+                        <!-- Collapsable -->
+                        <div class="collapse align-items-end" id="more-settings">
+
+                            <!-- Invert -->
+                            <label for="invert-input" class="light">Inverted: </label>
+                            <input type="checkbox" id="invert-input" title="source <- target" class="light left">
+
+                            <br><!-- Radix -->
+                            <label for="radix-input" title="hex: 16, dec: 10, bin: 1" class="light">Number System: </label>
+                            <input type="number" id="radix-input" value="16" title="hex: 16, dec: 10, bin: 1"
+                                onclick="select_content(this)" class="short-input left">
+
+                            <br><!-- Delimiter -->
+                            <label for="delimiter-input" title="Between the elements" class="light">Delimiter: </label>
+                            <input type="text" id="delimiter-input" value=" | " title="Between the elements"
+                                onclick="select_content(this)" class="short-input left">
+
+                            <br><!-- Prefix -->
+                            <label for="prefix-input" title="Before every element" class="light">Prefix: </label>
+                            <input type="text" id="prefix-input" value="" title="Before every element"
+                                onclick="select_content(this)" class="short-input left">
+
+                            <br><!-- Suffix -->
+                            <label for="suffix-input" title="After every element" class="light">Suffix: </label> <input type="text" id="suffix-input" value="" title="After every element"
+                                onclick="select_content(this)" class="short-input left">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output -->
+                <div title="Text entered in the above <Source Field> will be displayed here after clicking on <Translate>"
+                    class="center outputbox">
+                    <span id="nt-output"class="output"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Caesar-Vigenere -->
+        <div class="tab-pane fade show active" id="nav_caesar-vigenere" role="tabpanel"
+            aria-labelledby="nav-tab_caesar-vigenere" tabindex="0">
+
+            <div id="page-caesar-vigenere">
+                <div class="center inputbox">
+                    <div class="form-floating">
+
+                        <!-- Another nice textarea from bootstrap -->
+                        <textarea id="cv-source-input" title="Enter the source text/code here"
+                            style="height:100px;border-radius:15px;" cols="1000" class="form-control"></textarea>
+                        <label for="cv-source-input">Source Text</label>
+
+                    </div>
+                </div>
+
+                <div class="tool_panel row align-items-start justify-content-evenly">
+
+                    <!-- Mode Input -->
+                    <div class="col-4">
+                        <label for="cv-mode-select" style="margin-right: 2px">Mode:</label>
+                        <select name="cv-mode-select" id="cv-mode-select" class="mid-sized-input">
+                            <option value="caesar" selected="selected">Caesar</option>
+                            <option value="vigenere">Vigenère</option>
+                        </select>
+                    </div>
+
+                    <!-- 'Encode' Button -->
+                    <button onclick="exec_encode()" type="button" class="col-2 translate-btn">Encode</button>
+
+                    <!-- Key -->
+                    <div class="col-4" style="text-align: center">
+                        <!-- Caesar Key -->
+                        <div id="caesar-key-container">
+                            <label for="caesar-key-input" class="key-input short-input">Key </label>
+                            <input type="number" id="caesar-key-input">
+                        </div>
+
+                        <!-- Vigenere Key -->
+                        <div id="vigenere-key-container">
+                            <label for="vigenere-key-input" class="key-input short-input">Key </label>
+                            <input type="text" id="vigenere-key-input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output -->
+                <div title="Text entered in the above <Source Field> will be displayed here after clicking on <Encode>"
+                    class="center outputbox">
+                    <span id="cv-output" class="output"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
+
+<script src="scripts/utils.js"></script>
+<script src="scripts/logic_module.js"></script>
+<script src="scripts/text_to_numbers.js"></script>
+<script src="scripts/caesar_vigenere.js"></script>
+

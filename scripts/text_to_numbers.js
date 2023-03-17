@@ -1,9 +1,9 @@
 
 function exec_translate() {
-  const input_element = document.getElementById("source-input");
+  const input_element = document.getElementById("nt-source-input");
   const input_text = input_element.value;
 
-  const selected_mode = document.getElementById("mode-select").value;
+  const selected_mode = document.getElementById("nt-mode-select").value;
   const radix = document.getElementById("radix-input").value;
   const invert = false;
 
@@ -46,10 +46,6 @@ function exec_translate() {
   //     output = text_to_indices_in_alph(input_text, base1);
   //     break;
   // }
-}
-
-function is_alpha(ch) {
-  return ch.toLowerCase() != ch.toUpperCase();
 }
 
 function write_output(out) {
@@ -100,7 +96,3 @@ function toggle_more_settings() {
   }
 }
 
-function select_on_click(inp) {
-  inp.setSelectionRange(0, inp.value.length);
-}
-  
