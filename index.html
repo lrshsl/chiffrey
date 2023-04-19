@@ -32,6 +32,7 @@
             <a class="nav-link active" id="nav-tab_caesar-vigenere" data-bs-toggle="tab"
                 data-bs-target="#nav_caesar-vigenere" type="button" role="tab" aria-controls="nav_caesar-vigenere"
                 aria-selected="false">Caesar &amp;&amp; Vigenère</a>
+            <button id="dark-mode-toggle">Switch to light mode</button>
         </div>
     </nav>
 
@@ -168,7 +169,7 @@
                 <!-- Output -->
                 <div title="Text entered in the above <Source Field> will be displayed here after clicking on <Encode>"
                     class="center outputbox">
-                    <span id="cv-output" class="output"></span>
+                    <div id="cv-output" class="output"></div>
                 </div>
             </div>
         </div>
@@ -177,7 +178,8 @@
 </body>
 </html>
 
-<script src="scripts/html_include.js"></script>
+<script src="scripts/main.js"></script>
+<!-- <script src="scripts/html_include.js"></script> -->
 <script src="scripts/text_to_numbers.js"></script>
 <script src="scripts/caesar_vigenere.js"></script>
 
