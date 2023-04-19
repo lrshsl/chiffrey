@@ -2,6 +2,9 @@
   --default-short-input-width: 50px;
 }
 
+html {
+  background-color: #444;
+}
 
 /* Tag Selectors */
 div {
@@ -18,9 +21,14 @@ select {
   border-radius: 1000px;
   margin: 0 5px;
   width: 170px;
+  min-width: 100px;
 }
 
 /* Class Selectors */
+.text-centered {
+  text-align: center;
+}
+
 .tool_panel {
   padding: 12px 5px 5px;
   border-radius: 20px;
@@ -48,9 +56,6 @@ div.center {
   justify-content: center;
   align-items: center;
 }
-
-
-
 
 /* More specific to this very website */
 

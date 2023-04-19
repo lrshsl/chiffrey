@@ -1,4 +1,3 @@
-
 function exec_translate() {
   const input_element = document.getElementById("nt-source-input");
   const input_text = input_element.value;
@@ -7,9 +6,10 @@ function exec_translate() {
   const radix = document.getElementById("radix-input").value;
   const invert = false;
 
+
   // Short cirquit if there is no input
   if (input_text.length === 0) {
-    write_output("No Input")
+    write_output("No Input");
     return;
   }
 
@@ -22,17 +22,24 @@ function exec_translate() {
       write_output(output_chars);
       return;
     case "0index":
-      break;   /* base_index stays 0 as initialised */
+      break; /* base_index stays 0 as initialised */
     case "1index":
       base_index = 1;
   }
-  output_chars = [...input_text].map((ch) => !is_alpha(ch)? ch: ch.charCodeAt() - 'a'.charCodeAt() + base_index);
+  output_chars = [...input_text].map((ch) =>
+    !is_alpha(ch) ? ch : ch.charCodeAt() - "a".charCodeAt() + base_index
+  );
 
-    // Apply radix
-    output_chars = output_chars.map((ch) => ch.toString(radix));
+  // Apply radix
+  let output = output_chars.map((ch) => ch.toString(radix));
+
+  // Fill chars in binary mode that length is always 8
+  if (radix == 2) {
+    output = output.map((e) => "0".repeat(8 - e.length) + e);
+  }
 
   // Write output to the page
-  write_output(output_chars);
+  write_output(output);
 
   // let base1 = false;
   // switch (selected_mode) {
@@ -57,7 +64,7 @@ function write_output(out) {
   const prefix = document.getElementById("prefix-input").value;
   const suffix = document.getElementById("suffix-input").value;
 
-  if (typeof(out) !== "string")
+  if (typeof out !== "string")
     out = prefix + out.join(suffix + delimiter + prefix) + suffix;
   output_element.textContent = out;
 }
@@ -98,4 +105,3 @@ function toggle_more_settings() {
     label.textContent = "More Settings";
   }
 }
-
