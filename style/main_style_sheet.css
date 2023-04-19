@@ -1,29 +1,68 @@
 :root {
   --default-short-input-width: 50px;
+  
+  --bg-darkness3: #303030;
+  --bg-darkness2: #202020;
+  --bg-darkness1: #282828;
+  --bg-darkness0: #000;
+
+  --bg-blueish: #003;
+
+  --text-color: #fff;
+}
+
+/* Important necessary for overwriting bootstrap elements */
+* {
+  background-color: var(--bg-darkness3) !important;
+  color: var(--text-color) !important;
+  border-color: var(--bg-darkness0) !important;
 }
 
 html {
-  background-color: #444;
+  background-color: var(--bg-darkness3) !important;
 }
-
+ 
 /* Tag Selectors */
 div {
   border-radius: 25px;
+  background-color: var(--bg-darkness3) !important;
 }
 
-nav {
-  background-color: aliceblue;
+#page-caesar-vigenere div {
+  background-color: var(--bg-darkness2) !important;
+}
+
+#page-text-to-numbers div {
+  background-color: var(--bg-darkness2) !important;
+}
+
+nav * {
+  background-color: var(--bg-darkness2) !important;
+}
+
+nav .nav {
+  background-color: var(--bg-darkness1) !important;
+}
+
+label {
+    border: none !important;
+    background-color: var(--bg-darkness2) !important;
+}
+
+.tab-pane {
+  /* background-color: var(--bg-black) !important; */
 }
 
 button,
 input,
 select {
+  background-color: var(--bg-darkness1) !important;
+  border-color: var(--bg-darkness0) !important;
   border-radius: 1000px;
   margin: 0 5px;
   width: 170px;
   min-width: 100px;
 }
-
 /* Class Selectors */
 .text-centered {
   text-align: center;
@@ -32,9 +71,14 @@ select {
 .tool_panel {
   padding: 12px 5px 5px;
   border-radius: 20px;
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  background-color: var(--bg-darker) !important;
   width: 90%;
   margin: auto;
+}
+
+.tool_panel div, .tool_panel label {
+  background-color: var(--bg-darker) !important;
 }
 
 .short-input {
@@ -85,3 +129,10 @@ div.outputbox {
 .translate-btn {
   text-align: center;
 }
+
+textarea {
+    background-color: var(--background-color) !important;
+    color: #fff;
+}
+
+
