@@ -1,0 +1,54 @@
+
+
+#text-analyser_text-input{
+    width: 90%;
+    height: 50px;
+    background-color: var(--bg-darkness1) !important;
+}
+
+textarea {
+  border-radius: 3;
+  min-height: 100px;
+  /* background-color: transparent; */
+}
+
+table {
+    width: auto !important;
+    margin: auto;
+}
+
+/* Table */
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+label {
+    display: inline;
+    width: auto;
+    margin-right: 0;
+}
+
+input[type = "checkbox"] {
+    margin-left: 0;
+}
+
+.searchbar {
+    width: 90%;
+    height: 40px;
+    margin: auto;
+    background-color: var(--bg-darkness2);
+    border: none !important;
+}
+
+.searchbar div {
+    background-color: var(--bg-darkness2);
+}
+
+
+

@@ -22,7 +22,6 @@
   --fg-normal: #fff;
 }
 
-/* Important necessary for overwriting bootstrap elements */
 * {
   background-color: var(--bg-darkness3);
   color: var(--fg-normal);
@@ -30,8 +29,8 @@
   border-color: var(--bg-darkness0);
 }
 
-html {
-  background-color: var(--bg-darkness3);
+html, body {
+  background-color: var(--bg-darkness3) !important;
 }
  
 /* Tag Selectors */
@@ -83,6 +82,11 @@ span {
     background-color: var(--bg-darkness2);
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    margin-bottom: 0 !important;
+    padding-top: 1.5rem !important;
+}
+
 button,
 input,
 select {
@@ -94,7 +98,7 @@ select {
 }
 
 textarea {
-    background-color: var(--background-color) !important;
+    background-color: var(--bg-darkness2) !important;
     color: #fff;
     border: none !important;
 }

@@ -9,9 +9,10 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <!-- Include style sheets -->
+    <!-- Include style sheet -->
     <link rel="stylesheet" href="style/main_style_sheet.css">
-    <link rel="stylesheet" href="style/text_to_numbers.css">
+    <!-- Other style sheets are included directly before the (sub)pages,
+         so that eventually conflicting rules are overwritten -->
 
     <!-- Metadata -->
     <meta charset="UTF-8">
@@ -29,9 +30,15 @@
                 role="tab" aria-controls="nav_home" aria-selected="true">Home</a>
             <a class="nav-link" id="nav-tab_text-to-numbers" data-bs-toggle="tab" data-bs-target="#nav_text-to-numbers"
                 type="button" role="tab" aria-controls="nav_text_to_numbers" aria-selected="false">Text to numbers</a>
-            <a class="nav-link active" id="nav-tab_caesar-vigenere" data-bs-toggle="tab"
+            <a class="nav-link" id="nav-tab_caesar-vigenere" data-bs-toggle="tab"
                 data-bs-target="#nav_caesar-vigenere" type="button" role="tab" aria-controls="nav_caesar-vigenere"
                 aria-selected="false">Caesar &amp;&amp; Vigenère</a>
+            <a class="nav-link active" id="nav-tab_text-analyser" data-bs-toggle="tab"
+                data-bs-target="#nav_text-analyser" type="button" role="tab" aria-controls="nav_text-analyser"
+                aria-selected="false">Text analy(z|s)er</a>
+            <a class="nav-link" id="nav-tab_syntax-highlighter" data-bs-toggle="tab"
+                data-bs-target="#nav_syntax-highlighter" type="button" role="tab" aria-controls="nav_syntax-highlighter"
+                aria-selected="false">Syntax Highlighter</a>
             <button id="dark-mode-toggle">Switch to light mode</button>
         </div>
     </nav>
@@ -40,16 +47,25 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
             <h2>Wellcome</h2>
-            <p>This is a basic website for everything 'bout chiffres, ciphers &amp;&amp; codes</p>
+            <p>This is a basic website for everything about text representation; chiffres, ciphers &amp;&amp; codes</p>
         </div>
 
 
         <!-- Text to numbers page -->
+        <link rel="stylesheet" href="style/text_to_numbers.css">
         <div class="tab-pane fade" id="nav_text-to-numbers" role="tabpanel" aria-labelledby="nav-tab_text_to_numbers"
-            tabindex="0">
-
+            tabindex="1">
             <!-- Text to numbers -->
             <div id="page-text-to-numbers">
+                <!-- Title -->
+                <br>
+                <div class="text-center">
+                    <h2>Text to Numbers</h2>
+                    <p>Enter text and press 'Translate' to convert any ascii text in its numeric representation</p>
+                    <p>Click on mode to select different translation modes, or click on 'More Settings' to play with some advanced options</p>
+                </div>
+                <br>
+                <!-- Source Input -->
                 <div class="center inputbox">
                     <div class="form-floating">
 
@@ -89,9 +105,9 @@
                         <!-- Collapsable -->
                         <div class="collapse align-items-end" id="more-settings">
 
-                            <!-- Invert -->
-                            <label for="invert-input" class="light">Inverted: </label>
-                            <input type="checkbox" id="invert-input" title="source <- target" class="light left">
+                            <!-- Invert --> <!-- TODO! -->
+                            <!-- <label for="invert-input" class="light">Inverted: </label> -->
+                                <!-- <input type="button" id="invert-input" title="source <-> target" class="light left"> -->
 
                             <br><!-- Radix -->
                             <label for="radix-input" title="hex: 16, dec: 10, bin: 1" class="light">Number System: </label>
@@ -125,10 +141,20 @@
 
 
         <!-- Caesar-Vigenere -->
-        <div class="tab-pane fade show active" id="nav_caesar-vigenere" role="tabpanel"
-            aria-labelledby="nav-tab_caesar-vigenere" tabindex="0">
+        <link rel="stylesheet" href="style/caesar_vigenere.css">
+        <div class="tab-pane fade" id="nav_caesar-vigenere" role="tabpanel"
+            aria-labelledby="nav-tab_caesar-vigenere" tabindex="2">
 
             <div id="page-caesar-vigenere">
+                <!-- Title -->
+                <br>
+                <div class="text-center">
+                    <h2>Caesar &amp;&amp; Vigenere Ciphers</h2>
+                    <p>Just enter your plaintext and a key (number in Caesar mode and word in Vigenere mode) and click on 'Encrypt'!</p>
+                    <p>You can decrypt your message by entering the negative of the key (automatic decryption coming)</p>
+                </div>
+                <br>
+                <!-- Source Input -->
                 <div class="center inputbox">
                     <div class="form-floating">
 
@@ -140,6 +166,7 @@
                     </div>
                 </div>
 
+                <!-- Tool Panel -->
                 <div class="tool_panel row align-items-start justify-content-evenly">
 
                     <!-- Mode Input -->
@@ -152,7 +179,7 @@
                     </div>
 
                     <!-- 'Encode' Button -->
-                    <button onclick="exec_encode()" type="button" class="col-2 translate-btn">Encode</button>
+                    <button onclick="exec_encode()" type="button" class="col-2 translate-btn">Encrypt</button>
 
                     <!-- Key -->
                     <div class="col-4" style="text-align: center">
@@ -170,10 +197,117 @@
                     </div>
                 </div>
 
+                <!-- Tool panel automatic decryption -->
+
                 <!-- Output -->
                 <div title="Text entered in the above <Source Field> will be displayed here after clicking on <Encode>"
                     class="center outputbox">
                     <div id="cv-output" class="output"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Text Analyser -->
+        <link rel="stylesheet" href="style/text_analyser.css">
+        <div class="tab-pane fade show active" id="nav_text-analyser" role="tabpanel"
+            aria-labelledby="nav-tab_text-analyser" tabindex="3">
+
+            <div id="page-text-analyser" class="align-items-center justify-content-evenly">
+                <!-- Search bar -->
+                <div id="text-analyser_search-bar" class="row align-items-center justify-content-evenly searchbar">
+                    <div class="col align-items-center">
+                        <label for="text-analyser_search-input">Search in text:</label>
+                        <input type="text" id="text-analyser_search-input">
+                    </div>
+
+                    <div class="col align-items-center justify-content-evenly">
+                        <label for="text-analyser_occurrences-output">Occurrences:</label>
+                        <span id="text-analyser_occurrences-output">0</span>
+                    </div>
+
+                    <div class="col align-items-center justify-content-evenly">
+                        <label for="text-analyser_case-sensitive-input">Case Sensitive</label>
+                        <input type="checkbox" id="text-analyser_case-sensitive-input">
+                    </div>
+
+                    <div class="col align-items-center justify-content-evenly">
+                        <label for="text-analyser_whole-words-input">Whole Words</label>
+                        <input type="checkbox" id="text-analyser_whole-words-input">
+                    </div>
+                </div>
+                <!-- Title -->
+                <br>
+                <div class="text-center">
+                    <h2>Text Analyser</h2>
+                    <p>Enter the text you want to analyse below:</p>
+                </div>
+                <br>
+                <!-- Text Input -->
+                <div style="border:none!important" class="center align-items-center justify-content-evenly">
+                    <textarea id="text-analyser_text-input"></textarea>
+                </div>
+                <!-- Analyser output table -->
+                <br>
+                <div style="width:90%;margin:auto;">
+                    <table id="text-analyser_analysis-output">
+                        <tr id="num-words">
+                            <th>Words</th>
+                            <td>0</td>
+                        </tr>
+                        <tr id="num-chars_without-whitespace">
+                            <th>Chars (without whitespace)</th>
+                            <td>0</td>
+                        </tr>
+                        <tr id="num-chars_with-whitespace">
+                            <th>Chars (with whitespace)</th>
+                            <td>0</td>
+                        </tr>
+                        <tr id="num-bytes" title="Byte size doesn't necessarily correspond to number of chars in unicode">
+                            <th>Byte size</th>
+                            <td>0</td>
+                        </tr>
+                        <tr id="num-spaces">
+                            <th>Whitespace</th>
+                            <td>0</td>
+                        </tr>
+                        <tr id="num-unique-words">
+                            <th>Unique words</th>
+                            <td>0</td>
+                        </tr>
+                        <tr id="shortest-word">
+                            <th>Shortest Word</th>
+                            <td></td>
+                        </tr>
+                        <tr id="longest-word">
+                            <th>Longest word</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Syntax Highlighter -->
+        <link rel="stylesheet" href="style/syntax_highlighter.css">
+        <div class="tab-pane fade" id="nav_syntax-highlighter" role="tabpanel"
+            aria-labelledby="nav-tab_syntax-highlighter" tabindex="4">
+            <div id="page-syntax-highlighter">
+                <div class="container inputbox">
+                    <!-- Text Input -->
+                    <!-- <textarea id="syntax-highlighter_text-input" style="background-color:rgba(0,0,0,0)"></textarea> -->
+                    <!-- <div id="syntax-highlighter_highlighting-div"></div> -->
+                    <textarea id="syntax-highlighter_editor"></textarea>
+                    <div id="syntax-highlighter_bg-div"></div>
+                    <!-- <script> -->
+                        <!-- const gsyn_editor = document.getElementById("syn_editor") -->
+                        <!-- const syn_highlighting = document.getElementById("syn_highlighting") -->
+                        <!-- gsyn_editor.addEventListener("input", () => { -->
+                            <!-- syn_highlighting.innerHTML = gsyn_editor.value; -->
+                        <!-- }) -->
+                    <!-- </script> -->
+
                 </div>
             </div>
         </div>
@@ -188,4 +322,7 @@
 <script src="scripts/logic_module.js"></script>
 <script src="scripts/text_to_numbers.js"></script>
 <script src="scripts/caesar_vigenere.js"></script>
+<script src="scripts/text_analyser.js"></script>
+<script src="scripts/syntax_highlighter.js"></script>
+
 

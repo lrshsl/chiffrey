@@ -17,7 +17,7 @@ hide_according_to_mode();
 function hide_according_to_mode(mode) {
     if (typeof mode === "undefined") { mode = g_mode_select.value; }
 
-    if (mode == "caesar") {
+    if (mode === "caesar") {
         g_vigenere_key_container.style.display = "None";
     } else {
         g_caesar_key_container.style.display = "None";
