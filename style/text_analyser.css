@@ -3,7 +3,7 @@
 #text-analyser_text-input{
     width: 90%;
     height: 50px;
-    background-color: var(--bg-darkness1) !important;
+    background-color: var(--bg-darkness2) !important;
 }
 
 textarea {

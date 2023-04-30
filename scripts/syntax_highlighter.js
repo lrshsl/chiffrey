@@ -39,19 +39,20 @@ const keywords = ["function", "let", "if", "else", "while", "for", "switch", "ca
 
 gsyn_editor.addEventListener("input", () => {
     let output = gsyn_editor.value;
-    output = insert_newlines(output);
-    output = highlight_keywords(output, keywords);
+    output = translate_whitespace(output);
     output = highlight_literals(output);
+    output = highlight_keywords(output, keywords);
     gsyn_bg_div.innerHTML = output;
 })
 
-function insert_newlines(text) {
+function translate_whitespace(text) {
+    text = text.replace(/ /g, "&nbsp;");
     return text.replace(/\n/g, "<br>");
 }
 
 function highlight_keywords(text, keywords) {
     const kw_regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "g");
-    return text.replace(kw_regex, '<span class="highlight_kw">$1</span>');
+    return text.replace(kw_regex, `<span class="highlight_kw">$1</span>`);
 }
 
 function highlight_literals(text) {

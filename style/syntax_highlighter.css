@@ -16,6 +16,7 @@ span {
 }
 
 
+/* Synchronize editor and highlighting div */
 #syntax-highlighter_editor, #syntax-highlighter_bg-div {
   margin: 10px;
   padding: 10px;
@@ -24,34 +25,35 @@ span {
   height: 150px;
 }
 
-#syntax-highlighter_editor, #syn_highlighting, #syn_highlighting * {
-/*   /1* Also add text styles to highlighting tokens *1/ */
-/*   font-size: 15pt; */
-/*   font-family: monospace; */
-/*   line-height: 20pt; */
-/* } */
+#syntax-highlighter_editor, #syntax-highlighter_bg-div, #syntax-highlighter_bg-div * {
+  font-size: 15pt;
+  font-family: monospace;
+  line-height: 20pt;
+}
 
-/* #syn_editor, #syn_highlighting { */
-/*   position: absolute; */
-/*   top: 0; */
-/*   left: 10%; */
-/* } */
+#syntax-highlighter_editor, #syntax-highlighter_bg-div {
+    position: absolute;
+    --editor-width: 90%;
+    width: var(--editor-width);
+    left: calc(50% - var(--editor-width)/2);
+    top: calc(50% - 150px);
+}
 
-/* /1* z-coordinate so that the editor and highlighting tokens are on top of each other *1/ */
-/* #syn_editor { */
-/*   z-index: 1; */
-/*   color: transparent !important; */
-/*   background: transparent !important; */
-/*   caret-color: white; */
-/* } */
+#syntax-highlighter_editor {
+  z-index: 1;
+  color: transparent !important;
+  background: transparent !important;
+  caret-color: white;
+}
 
-/* #syn_highlighting { */
-/*   z-index: 0; */
-/* } */
+#syntax-highlighter_bg-div {
+  z-index: 0;
+  background-color: var(--bg-darkness2);
+}
 
 /* #syntax-highlighter_text-input{ */
-/*     width: 90%; */
-/*     height: 500px; */
-/*     background-color: var(--bg-darkness1) !important; */
+    /* width: 90%; */
+    /* height: 500px; */
+    /* background-color: var(--bg-darkness1) !important; */
 /* } */
 
