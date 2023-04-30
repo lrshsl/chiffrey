@@ -1,12 +1,12 @@
-const g_cv_page        = document.getElementById("page-caesar-vigenere");
-const g_input_element  = document.getElementById("cv-source-input");
-const g_output_element = document.getElementById("cv-output");
+const g_cv_page         = document.getElementById("page-caesar-vigenere");
+const g_input_element   = document.getElementById("cv-source-input");
+const g_output_element  = document.getElementById("cv-output");
 
-const g_radix_input    = document.getElementById("radix-input");
+const g_radix_input     = document.getElementById("radix-input");
 
 const g_mode_select     = document.getElementById("cv-mode-select");
 const g_caesar_key      = document.getElementById("caesar-key-input");
-const g_vigenere_key      = document.getElementById("vigenere-key-input");
+const g_vigenere_key    = document.getElementById("vigenere-key-input");
 
 const g_caesar_key_container    = document.getElementById("caesar-key-container");
 const g_vigenere_key_container  = document.getElementById("vigenere-key-container");
@@ -33,9 +33,9 @@ function exec_encode() {
     hide_according_to_mode();
 
     const inp = g_input_element.value;
-    let outp = "";
+    // let outp = "";
+    // const radix = g_radix_input.value;
     let key = 0;
-    const radix = g_radix_input.value;
     switch (g_mode_select.value) {
         case "caesar":
             if (g_caesar_key.value)
@@ -48,8 +48,8 @@ function exec_encode() {
         default:
             return "not yet implemented";
     }
-    g_output_element.textContent = outp;
-    return;
+    // g_output_element.textContent = outp;
+    // return;
 }
 
 

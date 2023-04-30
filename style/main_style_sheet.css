@@ -29,55 +29,52 @@
   border-color: var(--bg-darkness0);
 }
 
-html, body {
-  background-color: var(--bg-darkness3) !important;
-}
- 
-/* Tag Selectors */
-div {
-  border-radius: 25px;
-  background-color: var(--bg-darkness3);
-}
-
-#page-caesar-vigenere div {
-  background-color: var(--bg-darkness2);
-}
-
-#page-text-to-numbers div {
-  background-color: var(--bg-darkness2);
-}
-
-.nav-link {
-  border: none !important;
-}
-
-nav {
-  background-color: var(--bg-darkness1) !important;
-  border-radius: 0;
-}
-
-nav * {
-  background-color: var(--bg-darkness1) !important;
-  border-radius: 0;
-}
-
-nav .active {
-  background-color: var(--bg-darkness3) !important;
-}
-
-nav .nav {
-  background-color: var(--bg-blueish) !important;
-}
-
 body {
   background-color: var(--bg-darkness3);
 }
 
+
+/* Divs */
+div {
+  border-radius: 25px;
+  background-color: var(--bg-darkness3);
+}
+#page-caesar-vigenere div {
+  background-color: var(--bg-darkness2);
+}
+#page-text-to-numbers div {
+  background-color: var(--bg-darkness2);
+}
+
+/* Navbars */
+.nav-link {
+  border: none !important;
+}
+nav {
+  background-color: var(--bg-darkness1) !important;
+  border-radius: 0;
+}
+nav * {
+  background-color: var(--bg-darkness1) !important;
+  border-radius: 0;
+}
+nav .active {
+  background-color: var(--bg-darkness3) !important;
+}
+nav .nav {
+  background-color: var(--bg-blueish) !important;
+}
+
+/* Labels */
 label {
     border: none !important;
     background-color: var(--bg-darkness2) !important;
 }
+.inputbox label {
+    background-color: rbga(0, 0, 0, 0) !important;
+}
 
+/* Text */
 span {
     background-color: var(--bg-darkness2);
 }
@@ -87,6 +84,7 @@ h1, h2, h3, h4, h5, h6, p {
     padding-top: 1.5rem !important;
 }
 
+/* Input */
 button,
 input,
 select {
@@ -100,12 +98,13 @@ select {
 
 textarea {
     background-color: var(--bg-darkness2) !important;
-    color: #fff;
+    color: var(--fg-normal) !important;
     border: none !important;
 }
 
 
-/* Class Selectors */
+/*** Classes ***/
+
 .text-centered {
   text-align: center;
 }
@@ -133,6 +132,10 @@ textarea {
 
 .light {
   font-size: 70%;
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 /* Specifications to classes */

@@ -4,7 +4,7 @@ function exec_translate() {
 
   const selected_mode = document.getElementById("nt-mode-select").value;
   const radix = document.getElementById("radix-input").value;
-  const invert = false;
+  // const invert = false; // TODO
 
 
   // Short cirquit if there is no input
@@ -31,10 +31,17 @@ function exec_translate() {
   );
 
   // Apply radix
-  let output = output_chars.map((ch) => ch.toString(radix));
+  let output = output_chars.map((ch) => {
+      try {
+          console.log(`converting ${ch} to radix ${radix}: ${ch.toString(radix)}`);
+          return ch.toString(radix)
+      } catch (e) {
+          return ch;
+      }
+  });
 
   // Fill chars in binary mode that length is always 8
-  if (radix == 2) {
+  if (radix === 2) {
     output = output.map((e) => "0".repeat(8 - e.length) + e);
   }
 

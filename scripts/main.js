@@ -24,14 +24,14 @@ function activate_colorscheme(colorscheme) {
         root.style.setProperty("--bg-darkness1", "#999");
         root.style.setProperty("--bg-darkness2", "#bbb");
         root.style.setProperty("--bg-darkness3", "#fff");
-        root.style.setProperty("--text-color", "#000");
+        root.style.setProperty("--fg-normal", "#000");
 
     } else if (colorscheme === "dark") {
         root.style.setProperty("--bg-darkness0", "#000");
         root.style.setProperty("--bg-darkness1", "#202020");
         root.style.setProperty("--bg-darkness2", "#282828");
         root.style.setProperty("--bg-darkness3", "#333");
-        root.style.setProperty("--text-color", "#fff");
+        root.style.setProperty("--fg-normal", "#fff");
     } else {
         console.error("main.js > activate_colorscheme: Undefined: ${colorscheme}");
     }
