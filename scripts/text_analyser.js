@@ -55,16 +55,9 @@ function highlight_occurrences(string) {
     const regex = get_search_regex(string);
   
     let match = regex.exec(text);
-    let times = 0;
     while (true) {
-        times++;
-        if (times > 40) {
-            console.log("break while");
-            break;
-        }
         if (match == null || match === -1)
             break;
-
 
         match = regex.exec(text);
     }

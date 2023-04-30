@@ -33,9 +33,9 @@ function exec_translate() {
   // Apply radix
   let output = output_chars.map((ch) => {
       try {
-          console.log(`converting ${ch} to radix ${radix}: ${ch.toString(radix)}`);
           return ch.toString(radix)
       } catch (e) {
+          console.log(`Error converting ${ch} to radix ${radix}: ${e}`);
           return ch;
       }
   });

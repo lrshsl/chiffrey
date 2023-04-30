@@ -20,7 +20,7 @@ function hide_according_to_mode(mode) {
     if (typeof mode === "undefined") { mode = g_mode_select.value; }
 
     if (mode === "caesar") {
-        g_vigenere_key_container.style.display = "None";
+        g_vigenere_key_container.style.display = "none";
         g_caesar_key_container.style.display = "inline-block";
     } else {
         g_caesar_key_container.style.display = "none";
@@ -31,10 +31,12 @@ function hide_according_to_mode(mode) {
 
 function exec_encode() {
     hide_according_to_mode();
-
     const inp = g_input_element.value;
-    // let outp = "";
-    // const radix = g_radix_input.value;
+    g_output_element.textContent = encrypt_msg(inp);
+    return;
+}
+
+function encrypt_msg(inp) {
     let key = 0;
     switch (g_mode_select.value) {
         case "caesar":
@@ -46,10 +48,8 @@ function exec_encode() {
                 key = g_vigenere_key.value;
             return encrypt_vigenere(inp, key);
         default:
-            return "not yet implemented";
+            return `mode "${g_mode_select.value}" not (yet) implemented`;
     }
-    // g_output_element.textContent = outp;
-    // return;
 }
 
 

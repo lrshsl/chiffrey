@@ -10,7 +10,7 @@ function encrypt_caesar(msg, key) {
 function encrypt_vigenere(msg, key) {
     const a = 'a'.charCodeAt();
     const z = 'z'.charCodeAt();
-    const wrap = (ch) => ((ch.charCodeAt() - a) % (a-z)) + a;
+    const wrap = (n) => ((n - a) % (a-z)) + a;
 
     const base = a + 2;
     const key_digit = (i) => key[i%key.length].charCodeAt() - base;
