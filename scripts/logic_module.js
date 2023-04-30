@@ -10,11 +10,14 @@ function encrypt_caesar(msg, key) {
 function encrypt_vigenere(msg, key) {
     const a = 'a'.charCodeAt();
     const z = 'z'.charCodeAt();
-    const wrap = (n) => ((n - a) % (a-z)) + a;
 
-    const base = a + 2;
-    const key_digit = (i) => key[i%key.length].charCodeAt() - base;
+    // wraps a number between a and z
+    const wrap = (n) => ((n - a) % (z - a)) + a;
 
+    // helper function that returns the corresponding digit of the key (input is a int: 0..inp, output a int: 0-25)
+    const key_digit = (i) => key[i%key.length].charCodeAt() - a;
+
+    // encode one letter at a time with the corresponding digit of the key
     let outp = "";
     for (let i=0; i<msg.length; ++i) {
         outp += String.fromCharCode(wrap(msg[i].charCodeAt() + key_digit(i)));
