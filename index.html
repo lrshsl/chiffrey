@@ -27,25 +27,33 @@
     <!-- Navbar -->
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist" style="justify-content: center">
+            <!-- Home Tab -->
             <a class="nav-link active" id="nav-tab_home" data-bs-toggle="tab" data-bs-target="#nav_home" type="button"
                 role="tab" aria-controls="nav_home" aria-selected="true">Home</a>
+            <!-- TextToNumbers Tab -->
             <a class="nav-link" id="nav-tab_text-to-numbers" data-bs-toggle="tab" data-bs-target="#nav_text-to-numbers"
                 type="button" role="tab" aria-controls="nav_text_to_numbers" aria-selected="false">Text to numbers</a>
+            <!-- Caesar & Vigenere Tab -->
             <a class="nav-link" id="nav-tab_caesar-vigenere" data-bs-toggle="tab"
                 data-bs-target="#nav_caesar-vigenere" type="button" role="tab" aria-controls="nav_caesar-vigenere"
                 aria-selected="false">Caesar &amp;&amp; Vigenère</a>
+            <!-- Text analyser Tab -->
             <a class="nav-link" id="nav-tab_text-analyser" data-bs-toggle="tab"
                 data-bs-target="#nav_text-analyser" type="button" role="tab" aria-controls="nav_text-analyser"
                 aria-selected="false">Text analy(z|s)er</a>
-            <a class="nav-link active" id="nav-tab_syntax-highlighter" data-bs-toggle="tab"
+            <!-- Syntax Highlighter Tab -->
+            <a class="nav-link" id="nav-tab_syntax-highlighter" data-bs-toggle="tab"
                 data-bs-target="#nav_syntax-highlighter" type="button" role="tab" aria-controls="nav_syntax-highlighter"
                 aria-selected="false">Syntax Highlighter</a>
+            
+            <!-- Dark Mode Toggle Button -->
             <button id="dark-mode-toggle">Switch to light mode</button>
         </div>
     </nav>
 
     <!-- Navbar content -->
     <div class="tab-content" id="nav-tabContent">
+        <!-- Home Tab -->
         <div class="tab-pane fade show active" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
             <h2>Wellcome</h2>
             <p>This is a basic toolbox for (almost) everything you need to do with text</p>
@@ -55,11 +63,10 @@
         </div>
 
 
-        <!-- Text to numbers page -->
+        <!-- TextToNumbers Tab -->
         <link rel="stylesheet" href="style/text_to_numbers.css">
         <div class="tab-pane fade" id="nav_text-to-numbers" role="tabpanel" aria-labelledby="nav-tab_text_to_numbers"
             tabindex="1">
-            <!-- Text to numbers -->
             <div id="page-text-to-numbers">
                 <!-- Title -->
                 <br>
@@ -81,6 +88,7 @@
                     </div>
                 </div>
 
+                <!-- Tool Panel -->
                 <div class="tool_panel row align-items-start justify-content-evenly">
 
                     <!-- Mode Input -->
@@ -147,8 +155,8 @@
         <link rel="stylesheet" href="style/caesar_vigenere.css">
         <div class="tab-pane fade" id="nav_caesar-vigenere" role="tabpanel"
             aria-labelledby="nav-tab_caesar-vigenere" tabindex="2">
-
             <div id="page-caesar-vigenere">
+
                 <!-- Title -->
                 <br>
                 <div class="text-center">
@@ -157,6 +165,7 @@
                     <p>You can decrypt your message by entering the negative of the key (automatic decryption coming soon)</p>
                 </div>
                 <br>
+
                 <!-- Source Input -->
                 <div class="center inputbox">
                     <div class="form-floating">
@@ -200,7 +209,7 @@
                     </div>
                 </div>
 
-                <!-- Tool panel automatic decryption -->
+                <!-- TODO: Tool panel for automatic decryption -->
 
                 <!-- Output -->
                 <div title="Text entered in the above <Source Field> will be displayed here after clicking on <Encode>"
@@ -219,69 +228,93 @@
             <div id="page-text-analyser" class="align-items-center justify-content-evenly">
                 <!-- Search bar -->
                 <div id="text-analyser_search-bar" class="row align-items-center justify-content-evenly searchbar">
+
+                    <!-- Search Input -->
                     <div class="col align-items-center">
                         <label for="text-analyser_search-input">Search in text:</label>
                         <input type="text" id="text-analyser_search-input">
                     </div>
 
+                    <!-- Occurrences Output -->
                     <div class="col align-items-center justify-content-evenly">
                         <label for="text-analyser_occurrences-output">Occurrences:</label>
                         <span id="text-analyser_occurrences-output">0</span>
                     </div>
 
+                    <!-- Case Sensitive Checkbox -->
                     <div class="col align-items-center justify-content-evenly">
                         <label for="text-analyser_case-sensitive-input">Case Sensitive</label>
                         <input type="checkbox" id="text-analyser_case-sensitive-input">
                     </div>
 
+                    <!-- Whole Words Checkbox -->
                     <div class="col align-items-center justify-content-evenly">
                         <label for="text-analyser_whole-words-input">Whole Words</label>
                         <input type="checkbox" id="text-analyser_whole-words-input">
                     </div>
                 </div>
-                <!-- Title -->
-                <br>
+
+                
+                <br> <!-- Title -->
                 <div class="text-center">
                     <h2>Text Analyser</h2>
                     <p>Enter the text you want to analyse below:</p>
                 </div>
                 <br>
+
                 <!-- Text Input -->
                 <div style="border:none!important" class="center align-items-center justify-content-evenly">
                     <textarea id="text-analyser_text-input"></textarea>
                 </div>
-                <!-- Analyser output table -->
-                <br>
+
+                
+                <br> <!-- Analyser output table -->
                 <div style="width:90%;margin:auto;">
                     <table id="text-analyser_analysis-output">
+
+                        <!-- Number of words -->
                         <tr id="num-words">
                             <th>Words</th>
                             <td>0</td>
                         </tr>
+
+                        <!-- Number of chars without whitespace -->
                         <tr id="num-chars_without-whitespace">
                             <th>Chars (without whitespace)</th>
                             <td>0</td>
                         </tr>
+
+                        <!-- Number of chars with whitespace -->
                         <tr id="num-chars_with-whitespace">
                             <th>Chars (with whitespace)</th>
                             <td>0</td>
                         </tr>
+
+                        <!-- Number of bytes -->
                         <tr id="num-bytes" title="Byte size doesn't necessarily correspond to number of chars in unicode">
                             <th>Byte size</th>
                             <td>0</td>
                         </tr>
+
+                        <!-- Number of spaces -->
                         <tr id="num-spaces">
                             <th>Whitespace</th>
                             <td>0</td>
                         </tr>
+
+                        <!-- Number of unique words -->
                         <tr id="num-unique-words">
                             <th>Unique words</th>
                             <td>0</td>
                         </tr>
+
+                        <!-- Shortest word + length -->
                         <tr id="shortest-word">
                             <th>Shortest Word</th>
                             <td></td>
                         </tr>
+
+                        <!-- Longest word + length -->
                         <tr id="longest-word">
                             <th>Longest word</th>
                             <td></td>
@@ -294,33 +327,37 @@
 
         <!-- Syntax Highlighter -->
         <link rel="stylesheet" href="style/syntax_highlighter.css">
-        <div class="tab-pane fade show active" id="nav_syntax-highlighter" role="tabpanel"
+        <div class="tab-pane fade" id="nav_syntax-highlighter" role="tabpanel"
             aria-labelledby="nav-tab_syntax-highlighter" tabindex="4">
             <div id="page-syntax-highlighter">
-                <!-- Title -->
-                <br>
+
+                <br> <!-- Title -->
                 <div class="text-center">
                     <h2>Syntax Highlighter</h2>
                     <p>Enter some text to try your (own*) syntax-highlighting!</p>
                     <p>*Syntax highlighting editor is in developement</p>
                 </div>
-                <br>
-                <!-- Text Input -->
+
+                <br> <!-- Text Input -->
                 <div class="container inputbox">
+
                     <!-- Actual Input -->
                     <textarea id="syntax-highlighter_editor"></textarea>
+
                     <!-- Syntax Highlighter Div -->
                     <div id="syntax-highlighter_bg-div"></div>
                 </div>
+
                 <!-- Regexes -->
                 <div id="syntax-highlighter_regex-container" class="row justify-content-center align-items-evenly">
                     <table>
-                        <tr>
+                        <tr> <!-- Headers -->
                             <th>Keywords: </th>
                             <th>Literals: </th>
                             <th>Tabwidth: </th>
                         </tr>
-                        <tr>
+
+                        <tr> <!-- Inputs -->
                             <td><textarea id="syntax-highlighter_keywords-input" class="collector-input">
 fn return pub extern
 let const static
@@ -337,6 +374,7 @@ if else match for while loop break </textarea></td>
 </body>
 </html>
 
+<!-- Scripts -->
 <script src="scripts/main.js"></script>
 <!-- <script src="scripts/html_include.js"></script> -->
 <script src="scripts/utils.js"></script>

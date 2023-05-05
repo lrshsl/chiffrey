@@ -1,11 +1,16 @@
-const WHITESPACE_REGEX = /[ \n\r\t]+/;
+// Some often used regular expressions
+const SINGLE_WHITESPACE = /[ \n\r\t]/g;
+const WHITESPACE_REGEX = /[ \n\r\t]+/g;
 
 
+// Dark Mode functionalily
 const g_color_scheme = "light";
 const root = document.querySelector(":root");
 const dark_mode_button = document.querySelector("#dark-mode-toggle");
 dark_mode_button.addEventListener("click", toggle_dark_mode);
 
+
+// Toggle between light and dark mode
 function toggle_dark_mode() {
     switch (dark_mode_button.textContent) {
         case "Switch to dark mode":
@@ -21,6 +26,7 @@ function toggle_dark_mode() {
     }
 }
 
+// Overwrite the CSS color variables
 function activate_colorscheme(colorscheme) {
     if (colorscheme === "light") {
         root.style.setProperty("--bg-darkness0", "#fff");

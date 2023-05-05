@@ -6,10 +6,6 @@ const gtana_analysis_output_id = "text-analyser_analysis-output";
 const gtana_whole_words_input = document.getElementById("text-analyser_whole-words-input");
 const gtana_match_case_input = document.getElementById("text-analyser_case-sensitive-input");
 
-// Some often used regular expressions
-const SINGLE_WHITESPACE = /[ \n\r\t]/g;
-const WHITESPACE_REGEX = /[ \n\r\t]+/g;
-
 
 function get_search_regex(string) {
     // Returns a regular expression to search for `string` depending on settings
@@ -151,7 +147,7 @@ function show_table(data_rows) {
         // 
         // Special format
         if (id === "shortest-word" || id === "longest-word") {
-            t_row.textContent = `${value.text}, .. [${value.length}]`;
+            t_row.textContent = `[Len ${value.length}] ${value.text}, ..`;
             return;
         }
         // Default: Just display the bare value
