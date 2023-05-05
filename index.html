@@ -27,14 +27,14 @@
     <!-- Navbar -->
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist" style="justify-content: center">
-            <a class="nav-link" id="nav-tab_home" data-bs-toggle="tab" data-bs-target="#nav_home" type="button"
+            <a class="nav-link active" id="nav-tab_home" data-bs-toggle="tab" data-bs-target="#nav_home" type="button"
                 role="tab" aria-controls="nav_home" aria-selected="true">Home</a>
             <a class="nav-link" id="nav-tab_text-to-numbers" data-bs-toggle="tab" data-bs-target="#nav_text-to-numbers"
                 type="button" role="tab" aria-controls="nav_text_to_numbers" aria-selected="false">Text to numbers</a>
             <a class="nav-link" id="nav-tab_caesar-vigenere" data-bs-toggle="tab"
                 data-bs-target="#nav_caesar-vigenere" type="button" role="tab" aria-controls="nav_caesar-vigenere"
                 aria-selected="false">Caesar &amp;&amp; Vigenère</a>
-            <a class="nav-link active" id="nav-tab_text-analyser" data-bs-toggle="tab"
+            <a class="nav-link" id="nav-tab_text-analyser" data-bs-toggle="tab"
                 data-bs-target="#nav_text-analyser" type="button" role="tab" aria-controls="nav_text-analyser"
                 aria-selected="false">Text analy(z|s)er</a>
             <a class="nav-link" id="nav-tab_syntax-highlighter" data-bs-toggle="tab"
@@ -46,9 +46,12 @@
 
     <!-- Navbar content -->
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
+        <div class="tab-pane fade show active" id="nav_home" role="tabpanel" aria-labelledby="nav-tab_home" tabindex="0">
             <h2>Wellcome</h2>
-            <p>This is a basic website for everything about text representation; chiffres, ciphers &amp;&amp; codes</p>
+            <p>This is a basic toolbox for (almost) everything you need to do with text</p>
+            <p>Switch to any tab you're interested in and start using it - without long introdutions</p>
+            <p>Be aware that this webapp is a school project of mine; It's often just me experimenting with HTML, CSS and JS, so it may contain a few bugs and rendering problems ;)</p>
+            <p>Else.. Enjoy!</p>
         </div>
 
 
@@ -210,7 +213,7 @@
 
         <!-- Text Analyser -->
         <link rel="stylesheet" href="style/text_analyser.css">
-        <div class="tab-pane fade show active" id="nav_text-analyser" role="tabpanel"
+        <div class="tab-pane fade" id="nav_text-analyser" role="tabpanel"
             aria-labelledby="nav-tab_text-analyser" tabindex="3">
 
             <div id="page-text-analyser" class="align-items-center justify-content-evenly">
@@ -319,7 +322,6 @@
 <script src="scripts/main.js"></script>
 <!-- <script src="scripts/html_include.js"></script> -->
 <script src="scripts/utils.js"></script>
-<script src="scripts/logic_module.js"></script>
 <script src="scripts/text_to_numbers.js"></script>
 <script src="scripts/caesar_vigenere.js"></script>
 <script src="scripts/text_analyser.js"></script>

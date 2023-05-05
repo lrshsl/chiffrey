@@ -21,6 +21,7 @@ table {
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+  min-width: 64px;
 }
 
 th, td {
@@ -39,7 +40,7 @@ input[type = "checkbox"] {
 
 .searchbar {
     width: 90%;
-    height: 40px;
+    min-height: 40px;
     margin: auto;
     background-color: var(--bg-darkness2);
     border: none !important;

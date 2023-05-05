@@ -18,6 +18,7 @@ hide_according_to_mode();
 
 function hide_according_to_mode(mode) {
     if (typeof mode === "undefined") { mode = g_mode_select.value; }
+    console.assert(typeof mode === "string");
 
     if (mode === "caesar") {
         g_vigenere_key_container.style.display = "none";
@@ -33,10 +34,11 @@ function exec_encode() {
     hide_according_to_mode();
     const inp = g_input_element.value;
     g_output_element.textContent = encrypt_msg(inp);
-    return;
 }
 
 function encrypt_msg(inp) {
+    console.assert(typeof inp === "string");
+
     let key = 0;
     switch (g_mode_select.value) {
         case "caesar":
@@ -52,7 +54,34 @@ function encrypt_msg(inp) {
     }
 }
 
+// Helper method to wrap a number between a and z
+const a = 'a'.charCodeAt();
+const z = 'z'.charCodeAt();
+const wrap = (n) => ((n - a) % (z - a)) + a;
+
+// Helper function that returns the corresponding digit of the key (input is a int: 0..inp, output a int: 0-25)
+const key_digit = (key, i) => key[i%key.length].charCodeAt() - a;
+
+function encrypt_caesar(msg, key) {
+    console.assert(typeof msg === "string");
+    console.assert(typeof key === "number");
+
+    key %= 26;
+
+    return [...msg].map(
+        (ch) => String.fromCharCode(!is_alpha(ch)? ch: wrap(ch.charCodeAt() + key))
+    ).join("");
+}
 
 
+function encrypt_vigenere(msg, key) {
+
+    // Encode one letter at a time with the corresponding digit of the key
+    let outp = "";
+    for (let i=0; i<msg.length; ++i) {
+        outp += String.fromCharCode(wrap(msg[i].charCodeAt() + key_digit(key, i)));
+    }
+    return outp;
+}
 
 

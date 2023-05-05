@@ -77,8 +77,8 @@ function write_output(out) {
 }
 
 function text_to_ascii(str) {
-  let res = [];
-  for (var i = 0; i < str.length; ++i) {
+  const res = [];
+  for (let i = 0; i < str.length; ++i) {
     res.push(str.charCodeAt(i));
   }
   return res;
@@ -90,7 +90,7 @@ function ascii_to_text(ascii) {
 }
 
 function text_to_indices_in_alph(str, base1) {
-  base = "a".charCodeAt() - base1;
+  const base = "a".charCodeAt() - base1;
   str = str.toLowerCase();
   return [...str].map((s) => s.charCodeAt() - base);
 }
