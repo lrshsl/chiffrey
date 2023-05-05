@@ -6,7 +6,6 @@ const gtana_analysis_output_id = "text-analyser_analysis-output";
 const gtana_whole_words_input = document.getElementById("text-analyser_whole-words-input");
 const gtana_match_case_input = document.getElementById("text-analyser_case-sensitive-input");
 
-const WHITESPACE_REGEX = /[ \n\r\t]+/;
 
 function get_search_regex(string) {
     const whole_words = gtana_whole_words_input.checked;
