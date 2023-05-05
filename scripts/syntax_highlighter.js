@@ -1,67 +1,60 @@
-
-// const gsyn_text_input = document.getElementById("syntax-highlighter_text-input");
-// const gsyn_highlighting_div = document.getElementById("syntax-highlighter_highlighting-div");
-// const keywords = ["function", "let", "if", "else", "while", "for", "switch", "case", "break", "default", "return", "const", "var"];
-
-
-// // Position the text input
-// gsyn_text_input.style.position = "absolute";
-
-// // Position the highlighting div
-// gsyn_highlighting_div.style.position = "absolute";
-// gsyn_highlighting_div.style.marginLeft = gsyn_text_input.style.marginLeft;
-// gsyn_highlighting_div.style.marginRight = gsyn_text_input.style.marginRight;
-// gsyn_highlighting_div.style.width = gsyn_text_input.style.width;
-// gsyn_highlighting_div.style.height = gsyn_text_input.style.height;
-
-// gsyn_highlighting_div.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-
-// gsyn_text_input.addEventListener("input", () => {
-//     const start = gsyn_text_input.selectionStart;
-//     let highlighted_text = highlightKeywords(gsyn_text_input.value, keywords);
-//     highlighted_text = textarea.value.replace(/\n/g, "<br>");
-//     gsyn_highlighting_div.innerHTML = highlighted_text;
-//     const end = start + highlighted_text.length - gsyn_text_input.value.length;
-//     gsyn_text_input.setSelectionRange(start, end);
-// });
-
-// function highlightKeywords(text, keywords) {
-//   const kw_regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "g");
-//   return text.replace(kw_regex, '<span class="highlight_kw">$1</span>');
-// }
-
-
 const gsyn_editor = document.getElementById("syntax-highlighter_editor");
 const gsyn_bg_div = document.getElementById("syntax-highlighter_bg-div");
+const gsyn_keywords_input = document.getElementById("syntax-highlighter_keywords-input");
+const gsyn_literals_input = document.getElementById("syntax-highlighter_literals-input");
+const gsyn_tab_width_input = document.getElementById("syntax-highlighter_tab-width-input");
 
-const keywords = ["function", "let", "if", "else", "while", "for", "switch", "case", "break", "default", "return", "const", "var"];
+const STR_REPLACE = `<span class="highlight_str">$1</span>`;
+const NUM_REPLACE = `<span class="highlight_num">$1</span>`;
 
-
-gsyn_editor.addEventListener("input", () => {
-    let output = gsyn_editor.value;
-    output = translate_whitespace(output);
-    output = highlight_literals(output);
-    output = highlight_keywords(output, keywords);
-    gsyn_bg_div.innerHTML = output;
-})
-
-function translate_whitespace(text) {
-    text = text.replace(/ /g, "&nbsp;");
-    return text.replace(/\n/g, "<br>");
+function tab_width() {
+    return gsyn_tab_width_input.value;
 }
 
-function highlight_keywords(text, keywords) {
-    const kw_regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "g");
-    return text.replace(kw_regex, `<span class="highlight_kw">$1</span>`);
-}
-
-function highlight_literals(text) {
-    text = text.replace(/\\b(true|false|null)\\b/g, '<span class="highlight_literal">$1</span>');
-    const string_regex = /"([^"]*)"/g;
-    return text.replace(string_regex, '<span class="highlight_string">$1</span>');
+function keywords() {
+    return gsyn_keywords_input.value
+        .split(WHITESPACE_REGEX);
+        // .filter(word => word.length > 0);
 }
 
 
+function refresh() {
+    const kw_regex = new RegExp(`\\b(${keywords().join("|")})\\b`, "g");
+    const str_regex = /("[^"]*")/g;
+    const num_regex = /([0-9]+)/g;
+    gsyn_bg_div.innerHTML = gsyn_editor.value
+        // Fix newlines, tabs, and spaces
+        .replace(/[\n\r]/g, "<br>")
+        .replace(/\t/g, " ")
+        .replace(/ /g, "&nbsp;")
+        // Highlight literals
+        .replace(str_regex, STR_REPLACE)
+        .replace(num_regex, NUM_REPLACE);
+        // Highlight keywords
+        // .replace(kw_regex, `<span class="highlight_kw">$1</span>`);
+    // console.log(gsyn_editor.value);
+    // console.log(gsyn_bg_div.innerHTML);
+}
+
+// Prevent tab key from changing the focus
+gsyn_editor.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab')
+          return;
+    e.preventDefault();
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+
+    // set textarea value to: text before caret + tab + text after caret
+    this.value = `${this.value.substring(0, start)}\t${this.value.substring(end)}`;
+
+    // put caret at right position again
+    this.selectionStart = start + 1;
+    this.selectionEnd = end + 1;
+});
+
+// Refresh on new input
+// gsyn_keywords_input.addEventListener("input", () => refresh());
+gsyn_editor.addEventListener("input", () => refresh());
 
 
 

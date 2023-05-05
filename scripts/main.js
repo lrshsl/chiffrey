@@ -1,3 +1,6 @@
+const WHITESPACE_REGEX = /[ \n\r\t]+/;
+
+
 const g_color_scheme = "light";
 const root = document.querySelector(":root");
 const dark_mode_button = document.querySelector("#dark-mode-toggle");

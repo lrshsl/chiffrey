@@ -1,3 +1,8 @@
+* {
+    --editor-width: 90vw;
+    --editor-height: 20vh;
+}
+
 span {
     background-color: var(--bg-darkness2);
 }
@@ -7,11 +12,11 @@ span {
     text-shadow: 0 0 5px yellow;
 }
 .highlight_num {
-    color: blue;
-    text-shadow: 0 0 5px blue;
+    color: lightblue;
+    text-shadow: 0 0 5px lightblue;
 }
 
-.highlight_string {
+.highlight_str {
     text-shadow: 1px 1px red;
 }
 
@@ -33,10 +38,9 @@ span {
 
 #syntax-highlighter_editor, #syntax-highlighter_bg-div {
     position: absolute;
-    --editor-width: 90%;
     width: var(--editor-width);
-    left: calc(50% - var(--editor-width)/2);
-    top: calc(50% - 150px);
+    left: calc(50vw - var(--editor-width)/2);
+    top: calc(50vh - var(--editor-height)/2);
 }
 
 #syntax-highlighter_editor {
@@ -56,4 +60,19 @@ span {
     /* height: 500px; */
     /* background-color: var(--bg-darkness1) !important; */
 /* } */
+
+#syntax-highlighter_regex-container {
+    position: absolute;
+    top: calc(50vh + var(--editor-height)/2 + 10px);
+    width: var(--editor-width);
+    left: calc(50vw - var(--editor-width)/2);
+    border: 1px solid var(--bg-darkness2);
+}
+
+
+/* Collector input */
+
+
+
+
 

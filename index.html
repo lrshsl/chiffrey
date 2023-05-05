@@ -37,7 +37,7 @@
             <a class="nav-link" id="nav-tab_text-analyser" data-bs-toggle="tab"
                 data-bs-target="#nav_text-analyser" type="button" role="tab" aria-controls="nav_text-analyser"
                 aria-selected="false">Text analy(z|s)er</a>
-            <a class="nav-link" id="nav-tab_syntax-highlighter" data-bs-toggle="tab"
+            <a class="nav-link active" id="nav-tab_syntax-highlighter" data-bs-toggle="tab"
                 data-bs-target="#nav_syntax-highlighter" type="button" role="tab" aria-controls="nav_syntax-highlighter"
                 aria-selected="false">Syntax Highlighter</a>
             <button id="dark-mode-toggle">Switch to light mode</button>
@@ -294,14 +294,14 @@
 
         <!-- Syntax Highlighter -->
         <link rel="stylesheet" href="style/syntax_highlighter.css">
-        <div class="tab-pane fade" id="nav_syntax-highlighter" role="tabpanel"
+        <div class="tab-pane fade show active" id="nav_syntax-highlighter" role="tabpanel"
             aria-labelledby="nav-tab_syntax-highlighter" tabindex="4">
             <div id="page-syntax-highlighter">
                 <!-- Title -->
                 <br>
                 <div class="text-center">
                     <h2>Syntax Highlighter</h2>
-                    <p>Enter some text to try your own* syntax-highlighting!</p>
+                    <p>Enter some text to try your (own*) syntax-highlighting!</p>
                     <p>*Syntax highlighting editor is in developement</p>
                 </div>
                 <br>
@@ -311,6 +311,24 @@
                     <textarea id="syntax-highlighter_editor"></textarea>
                     <!-- Syntax Highlighter Div -->
                     <div id="syntax-highlighter_bg-div"></div>
+                </div>
+                <!-- Regexes -->
+                <div id="syntax-highlighter_regex-container" class="row justify-content-center align-items-evenly">
+                    <table>
+                        <tr>
+                            <th>Keywords: </th>
+                            <th>Literals: </th>
+                            <th>Tabwidth: </th>
+                        </tr>
+                        <tr>
+                            <td><textarea id="syntax-highlighter_keywords-input" class="collector-input">
+fn return pub extern
+let const static
+if else match for while loop break </textarea></td>
+                            <td><textarea id="syntax-highlighter_literals-input"></textarea></td>
+                            <td><input type="number" id="syntax-highlighter_tab-width-input" value="2"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
