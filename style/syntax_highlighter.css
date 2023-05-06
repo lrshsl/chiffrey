@@ -26,23 +26,22 @@ span {
   margin: 10px;
   padding: 10px;
   border: 0;
-  width: calc(100% - 32px);
+
+  position: absolute;
   height: 150px;
+  width: var(--editor-width);
+  left: calc(50vw - var(--editor-width)/2);
+  top: calc(50vh - var(--editor-height)/2);
 }
 
+/* They must have the same font as well */
 #syntax-highlighter_editor, #syntax-highlighter_bg-div, #syntax-highlighter_bg-div * {
   font-size: 15pt;
   font-family: monospace;
   line-height: 20pt;
 }
 
-#syntax-highlighter_editor, #syntax-highlighter_bg-div {
-    position: absolute;
-    width: var(--editor-width);
-    left: calc(50vw - var(--editor-width)/2);
-    top: calc(50vh - var(--editor-height)/2);
-}
-
+/* Make the editor transparent except the caret */
 #syntax-highlighter_editor {
   z-index: 1;
   color: transparent !important;
@@ -50,16 +49,11 @@ span {
   caret-color: white;
 }
 
+/* Put the background div behind the editor */
 #syntax-highlighter_bg-div {
   z-index: 0;
   background-color: var(--bg-darkness2);
 }
-
-/* #syntax-highlighter_text-input{ */
-    /* width: 90%; */
-    /* height: 500px; */
-    /* background-color: var(--bg-darkness1) !important; */
-/* } */
 
 #syntax-highlighter_regex-container {
     position: absolute;
@@ -69,8 +63,6 @@ span {
     border: 1px solid var(--bg-darkness2);
 }
 
-
-/* Collector input */
 
 
 

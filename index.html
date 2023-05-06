@@ -345,16 +345,16 @@
                     <textarea id="syntax-highlighter_editor"></textarea>
 
                     <!-- Syntax Highlighter Div -->
-                    <div id="syntax-highlighter_bg-div"></div>
+                    <div id="syntax-highlighter_bg-div" style="white-space: pre"></div>
                 </div>
 
                 <!-- Regexes -->
                 <div id="syntax-highlighter_regex-container" class="row justify-content-center align-items-evenly">
                     <table>
                         <tr> <!-- Headers -->
-                            <th>Keywords: </th>
-                            <th>Literals: </th>
-                            <th>Tabwidth: </th>
+                            <th>Keywords: <input type="color" value="#224488" id="syntax-highlighter_keywords-color"></th>
+                            <th>Literals: <input type="color" value="#ff2222" id="syntax-highlighter_keywords-color"></th>
+                            <th>Operators: <input type="color" value="#bb9922" id="syntax-highlighter_keywords-color"></th>
                         </tr>
 
                         <tr> <!-- Inputs -->
@@ -363,7 +363,13 @@ fn return pub extern
 let const static
 if else match for while loop break </textarea></td>
                             <td><textarea id="syntax-highlighter_literals-input"></textarea></td>
-                            <td><input type="number" id="syntax-highlighter_tab-width-input" value="2"></td>
+                            <td><textarea id="syntax-highlighter_operators-input">+-*/=</textarea></td>
+                        </tr>
+
+                        <tr> <!-- Add Groups -->
+                            <td class="add-group">+</td>
+                            <td class="add-group">+</td>
+                            <td class="add-group">+</td>
                         </tr>
                     </table>
                 </div>

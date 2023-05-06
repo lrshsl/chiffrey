@@ -138,6 +138,11 @@ textarea {
   background-color: transparent;
 }
 
+.add-group {
+  text-align: center;
+  background-color: var(--bg-darkness2);
+}
+
 /* Specifications to classes */
 div.center {
   border: 2px solid darkblue;
