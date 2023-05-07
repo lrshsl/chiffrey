@@ -352,25 +352,33 @@
                 <div id="syntax-highlighter_regex-container" class="row justify-content-center align-items-evenly">
                     <table>
                         <tr> <!-- Headers -->
-                            <th>Keywords: <input type="color" value="#224488" id="syntax-highlighter_keywords-color"></th>
-                            <th>Literals: <input type="color" value="#ff2222" id="syntax-highlighter_keywords-color"></th>
-                            <th>Operators: <input type="color" value="#bb9922" id="syntax-highlighter_keywords-color"></th>
+                            <th>Normal: <input type="color" value="#2e9494" id="syntax-highlighter_normal-color-input"></th>
+                            <th>Background: <input type="color" value="#171717" id="syntax-highlighter_bg-color-input"></th>
+                            <th>Keywords: <input type="color" value="#51e1e1" id="syntax-highlighter_kw-color-input"></th>
+                            <th>Strings: <input type="color" value="#7887ab" id="syntax-highlighter_str-color-input"></th>
+                            <th>Numbers: <input type="color" value="#162955" id="syntax-highlighter_num-color-input"></th>
+                            <th>Operators: <input type="color" value="#aa9739" id="syntax-highlighter_op-color-input"></th>
+                            <th>Comments: <input type="color" value="#4f268e" id="syntax-highlighter_comment-color-input"></th>
                         </tr>
 
                         <tr> <!-- Inputs -->
-                            <td><textarea id="syntax-highlighter_keywords-input" class="collector-input">
+                            <td> <!-- Never available --> </td>
+                            <td> <!-- Never available --> </td>
+                            <td><textarea id="syntax-highlighter_keywords-collector" class="collector-input">
 fn return pub extern
 let const static
 if else match for while loop break </textarea></td>
-                            <td><textarea id="syntax-highlighter_literals-input"></textarea></td>
-                            <td><textarea id="syntax-highlighter_operators-input">+-*/=</textarea></td>
+                            <td>Unavailable</td>
+                            <td>Unavailable</td>
+                            <td><textarea id="syntax-highlighter_operators-collector">+ - * /</textarea></td>
+                            <td><textarea id="syntax-highlighter_comment-collector">;; ;;; ;;;</textarea></td>
                         </tr>
 
-                        <tr> <!-- Add Groups -->
-                            <td class="add-group">+</td>
-                            <td class="add-group">+</td>
-                            <td class="add-group">+</td>
-                        </tr>
+                        <!-- <tr> <!-1- Add Groups -1-> -->
+                            <!-- <td class="add-group">+</td> -->
+                            <!-- <td class="add-group">+</td> -->
+                            <!-- <td class="add-group">+</td> -->
+                        <!-- </tr> -->
                     </table>
                 </div>
             </div>
