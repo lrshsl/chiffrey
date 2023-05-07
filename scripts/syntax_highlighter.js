@@ -73,12 +73,54 @@ colors = {
     bg: () => gsyn_bg_color_input.value? gsyn_bg_color_input.value : "#171717",
     kw: () => gsyn_kw_color_input.value? gsyn_kw_color_input.value : "#51e1e1",
     str: () => gsyn_str_color_input.value? gsyn_str_color_input.value : "#7887ab",
-    num: () => gsyn_num_color_input.value? gsyn_num_color_input.value : "#162955",
+    num: () => gsyn_num_color_input.value? gsyn_num_color_input.value : "#7887ab",
     op: () => gsyn_op_color_input.value? gsyn_op_color_input.value : "yellow",
     comment: () => gsyn_comment_color_input.value? gsyn_comment_color_input.value : "#4f628e"
 }
 
-color_tag = (kind) => `<span style='background-color: ${colors.bg()}; color: ${colors[kind]()}'>$1</span>`;
+// Add a <span> tag that highlights the text `$1`. Some symbols have to be replaced
+// that they don't conflict with other replacements (they could be replaced again and
+// make the <span> block not parsable)
+// This bug still exists if a keyword matches something from the <span> tag
+color_tag = (kind) => `<span style='background-color: ${colors.bg()}; color: ${colors[kind]()}'>$1</span>`
+    .replace("/", "slash")
+    .replace("<", "lt")
+    .replace(">", "gt")
+    .replace("=", "eq")
+    .replace("'", "apos")
+    .replace(";", "semi")
+    .replace("#", "hashtag")
+    .replace("0", "zero")
+    .replace("1", "one")
+    .replace("2", "two")
+    .replace("3", "three")
+    .replace("4", "four")
+    .replace("5", "five")
+    .replace("6", "six")
+    .replace("7", "seven")
+    .replace("8", "eight")
+    .replace("9", "nine")
+;
+
+unsubstitute = (str) => str
+    .replace(/slash/g, "/")
+    .replace(/lt/g, "<")
+    .replace(/gt/g, ">")
+    .replace(/eq/g, "=")
+    .replace(/apos/g, "'")
+    .replace(/semi/g, ";")
+    .replace(/hashtag/g, "#")
+    .replace(/zero/g, "0")
+    .replace(/one/g, "1")
+    .replace(/two/g, "2")
+    .replace(/three/g, "3")
+    .replace(/four/g, "4")
+    .replace(/five/g, "5")
+    .replace(/six/g, "6")
+    .replace(/seven/g, "7")
+    .replace(/eight/g, "8")
+    .replace(/nine/g, "9")
+;
 
 function refresh() {
     // Add background color
@@ -99,6 +141,8 @@ function refresh() {
         .replace(str_regex(), color_tag("str"))
         // Highlight keywords
         .replace(kw_regex(), color_tag("kw"))
+
+    gsyn_bg_div.innerHTML = unsubstitute(gsyn_bg_div.innerHTML);
 }
 
 // Prevent tab key from changing the focus
