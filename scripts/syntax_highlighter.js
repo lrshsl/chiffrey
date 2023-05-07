@@ -13,6 +13,7 @@ const gsyn_bg_color_input = document.getElementById("syntax-highlighter_bg-color
 const gsyn_kw_color_input = document.getElementById("syntax-highlighter_kw-color-input");
 const gsyn_str_color_input = document.getElementById("syntax-highlighter_str-color-input");
 const gsyn_num_color_input = document.getElementById("syntax-highlighter_num-color-input");
+const gsyn_brc_color_input = document.getElementById("syntax-highlighter_brackets-color-input");
 const gsyn_op_color_input = document.getElementById("syntax-highlighter_op-color-input");
 const gsyn_comment_color_input = document.getElementById("syntax-highlighter_comment-color-input");
 
@@ -51,6 +52,7 @@ const kw_regex = () => {
 }
 const str_regex = () => new RegExp(`("[^"]*")`, "g");
 const num_regex = () => new RegExp("([0-9]+\.?[0-9]*)", "g");
+const brc_regex = () => new RegExp("([$,;{}()\\[\\]])", "g");
 const op_regex = () => {
     const inp = make_regex_compatible(gsyn_op_input.value);
     const ops = inp.split(WHITESPACE_REGEX);
@@ -74,7 +76,8 @@ colors = {
     kw: () => gsyn_kw_color_input.value? gsyn_kw_color_input.value : "#51e1e1",
     str: () => gsyn_str_color_input.value? gsyn_str_color_input.value : "#7887ab",
     num: () => gsyn_num_color_input.value? gsyn_num_color_input.value : "#7887ab",
-    op: () => gsyn_op_color_input.value? gsyn_op_color_input.value : "yellow",
+    brc: () => gsyn_brc_color_input.value? gsyn_brc_color_input.value : "#aa9739",
+    op: () => gsyn_op_color_input.value? gsyn_op_color_input.value : "aa9739",
     comment: () => gsyn_comment_color_input.value? gsyn_comment_color_input.value : "#4f628e"
 }
 
@@ -102,6 +105,7 @@ color_tag = (kind) => `<span style='background-color: ${colors.bg()}; color: ${c
     .replace("9", "nine")
 ;
 
+// Undo the replacements in the <span> tag
 unsubstitute = (str) => str
     .replace(/slash/g, "/")
     .replace(/lt/g, "<")
@@ -135,6 +139,7 @@ function refresh() {
         .replace(num_regex(), color_tag("num"))
         // Highlight operators
         .replace(op_regex(), color_tag("op"))
+        .replace(brc_regex(), color_tag("brc"))
         // Highlight comments
         .replace(comment_regex(), color_tag("comment"))
         // Highlight strings
@@ -172,6 +177,7 @@ gsyn_normal_color_input.addEventListener("input", () => refresh());
 gsyn_kw_color_input.addEventListener("input", () => refresh());
 gsyn_str_color_input.addEventListener("input", () => refresh());
 gsyn_num_color_input.addEventListener("input", () => refresh());
+gsyn_brc_color_input.addEventListener("input", () => refresh());
 gsyn_op_color_input.addEventListener("input", () => refresh());
 gsyn_comment_color_input.addEventListener("input", () => refresh());
 

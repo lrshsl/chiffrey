@@ -55,16 +55,33 @@ span {
   background-color: var(--bg-darkness2);
 }
 
-#syntax-highlighter_regex-container {
+#syntax-highlighter_specifications-container {
     position: absolute;
     top: calc(50vh + var(--editor-height)/2 + 10px);
     width: var(--editor-width);
     left: calc(50vw - var(--editor-width)/2);
-    border: 1px solid var(--bg-darkness2);
 }
 
+#syntax-highlighter_specifications-container div {
+    background-color: var(--bg-darkness3);
+}
 
+input[type=color] {
+    max-width: 100px;
+    background-color: var(--bg-darkness3);
+    border-radius: 0;
+}
 
+.outline {
+    border: 1px solid var(--bg-darkness1);
+}
+
+div.title {
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+    text-align: center !important;
+    background-color: var(--bg-darkness1) !important;
+}
 
 
 
