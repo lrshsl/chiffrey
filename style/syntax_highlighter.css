@@ -55,6 +55,8 @@ span {
   background-color: var(--bg-darkness2);
 }
 
+
+/* Other styles */
 #syntax-highlighter_regex-container {
     position: absolute;
     top: calc(50vh + var(--editor-height)/2 + 10px);

@@ -33,7 +33,7 @@ function exec_translate() {
     }
 
     // Convert to number representation (zero-, one-based indices or ascii, depending on `base_index`)
-    output_chars = [...input_text].map((ch) =>
+    output_chars = [...input_text.toLowerCase()].map((ch) =>
         !is_alpha(ch) ? ch : ch.charCodeAt() - "a".charCodeAt() + base_index
     );
 

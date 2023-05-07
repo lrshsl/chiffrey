@@ -35,7 +35,7 @@ function hide_according_to_mode(mode) {
 // Main execution
 function exec_encode() {
     hide_according_to_mode();
-    const inp = g_input_element.value;
+    const inp = g_input_element.value.toLowerCase();
     const mode = g_mode_select.value;
     g_output_element.textContent = encrypt_msg(inp, mode);
 }
@@ -77,8 +77,6 @@ const key_digit = (key, i) => key[i%key.length].charCodeAt() - a;
 
 // Encrypt `msg` with `key` using the Caesar cipher
 function encrypt_caesar(msg, key) {
-    console.assert(typeof msg === "string");
-    console.assert(typeof key === "number");
 
     key %= 26;
 
@@ -89,6 +87,9 @@ function encrypt_caesar(msg, key) {
 
 // Encrypt `msg` with `key` using the Vigenere cipher
 function encrypt_vigenere(msg, key) {
+    if (key.length == null || msg.length == null) {
+        return "Please enter a key and a message to encrypt";
+    }
 
     // Encode one letter at a time with the corresponding digit of the key
     let outp = "";
