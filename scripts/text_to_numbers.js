@@ -3,7 +3,7 @@
 function exec_translate() {
     // Some variables that should get refreshed every time
     const input_element = document.getElementById("nt-source-input");
-    const input_text = input_element.value;
+    const input_text = input_element.value.toLowerCase();
 
     const selected_mode = document.getElementById("nt-mode-select").value;
     const radix = document.getElementById("radix-input").value;
@@ -55,6 +55,7 @@ function exec_translate() {
     // Write output to the page
     write_output(output);
 }
+
 
 // Writes `out` to the output elementt
 function write_output(out) {

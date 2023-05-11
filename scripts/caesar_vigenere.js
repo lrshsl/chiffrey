@@ -35,7 +35,7 @@ function hide_according_to_mode(mode) {
 // Main execution
 function exec_encode() {
     hide_according_to_mode();
-    const inp = g_input_element.value;
+    const inp = g_input_element.value.toLowerCase();
     const mode = g_mode_select.value;
     g_output_element.textContent = encrypt_msg(inp, mode);
 }
@@ -83,7 +83,7 @@ function encrypt_caesar(msg, key) {
     key %= 26;
 
     return [...msg].map(
-        (ch) => String.fromCharCode(!is_alpha(ch)? ch: wrap(ch.charCodeAt() + key))
+        (ch) => String.fromCharCode(!is_alpha(ch)? ch.charCodeAt(): wrap(ch.charCodeAt() + key))
     ).join("");
 }
 
