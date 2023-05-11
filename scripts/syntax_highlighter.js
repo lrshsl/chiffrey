@@ -51,7 +51,7 @@ const kw_regex = () => {
     return new RegExp(`\\b(${kwords.join("|")})\\b`, "g");
 }
 const str_regex = () => new RegExp(`("[^"]*")`, "g");
-const num_regex = () => new RegExp("([0-9]+\.?[0-9]*)", "g");
+const num_regex = () => new RegExp("([0-9]+\.?[0-9]+)", "g");
 const brc_regex = () => new RegExp("([$,;{}()\\[\\]])", "g");
 const op_regex = () => {
     const inp = make_regex_compatible(gsyn_op_input.value);
@@ -93,6 +93,7 @@ color_tag = (kind) => `<span style='background-color: ${colors.bg()}; color: ${c
     .replace("'", "apos")
     .replace(";", "semi")
     .replace("#", "hashtag")
+    .replace("&", "amp")
     .replace("0", "zero")
     .replace("1", "one")
     .replace("2", "two")
@@ -114,6 +115,7 @@ unsubstitute = (str) => str
     .replace(/apos/g, "'")
     .replace(/semi/g, ";")
     .replace(/hashtag/g, "#")
+    .replace(/amp/g, "&")
     .replace(/zero/g, "0")
     .replace(/one/g, "1")
     .replace(/two/g, "2")

@@ -42,7 +42,6 @@ function exec_translate() {
 
     // Fill chars in binary mode that length is always 8
     if (radix === 2) {
-        console.log("Binary mode");
         // Pad with zeros
         output = output.map((e) => "0".repeat(8 - e.length) + e);
     }
@@ -51,20 +50,7 @@ function exec_translate() {
     write_output(output);
 }
 
-
-// Apply radix
-function apply_radix(char_array, radix) {
-    return char_array.map((ch) => {
-        try {
-            return ch.toString(radix);
-        } catch (e) {
-            console.log(`Error applying radix ${radix} to char ${ch}: ${e}`);
-            return ch;
-        }
-    });
-}
-
-// Writes `out` to the output elementt
+// Writes `out` to the output element in the page
 function write_output(out) {
     const output_element = document.getElementsByClassName("output")[0];
     const delimiter = document.getElementById("delimiter-input").value;
@@ -76,6 +62,9 @@ function write_output(out) {
         out = prefix + out.join(suffix + delimiter + prefix) + suffix;
     output_element.textContent = out;
 }
+
+
+/// Util functions for this page ///
 
 // Convert characters to ascii
 function text_to_ascii(str) {
@@ -99,6 +88,19 @@ function parse_numbers(str, radix, delimiter, prefix, suffix) {
     res = res.map((ch) => parseInt(ch, radix));
     return res;
 }
+
+// Apply a radix to a array of characters
+function apply_radix(char_array, radix) {
+    return char_array.map((ch) => {
+        try {
+            return ch.toString(radix);
+        } catch (e) {
+            console.log(`Error applying radix ${radix} to char ${ch}: ${e}`);
+            return ch;
+        }
+    });
+}
+
 
 // UI function
 // Sets the text to 'More' or 'Hide' and toggles the arrow
