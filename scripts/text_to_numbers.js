@@ -6,7 +6,7 @@ function exec_translate() {
     const input_text = input_element.value.toLowerCase();
 
     const selected_mode = document.getElementById("nt-mode-select").value;
-    const radix = document.getElementById("radix-input").value;
+    const radix = parseInt(document.getElementById("radix-input").value);
     // const invert = false; // TODO
 
 
@@ -17,12 +17,12 @@ function exec_translate() {
     }
 
     // Translate according to the mode
-    let output_chars = ["No mode selected"];
+    let output = ["No mode selected"];
     let base_index = 0;
     switch (selected_mode) {
         case "ascii":
-            output_chars = text_to_ascii(input_text);
-            write_output(output_chars);
+            output = text_to_ascii(input_text);
+            write_output(apply_radix(output, radix));
             return;
         case "0index":
             break; /* base_index stays 0 as initialised */
@@ -33,22 +33,17 @@ function exec_translate() {
     }
 
     // Convert to number representation (zero-, one-based indices or ascii, depending on `base_index`)
-    output_chars = [...input_text].map((ch) =>
-        !is_alpha(ch) ? ch : ch.charCodeAt() - "a".charCodeAt() + base_index
+    output = [...input_text].map((ch) =>
+        !is_alpha(ch) ? ch.charCodeAt() : ch.charCodeAt() - "a".charCodeAt() + base_index
     );
 
     // Apply radix
-    let output = output_chars.map((ch) => {
-        try {
-            return ch.toString(radix)
-        } catch (e) {
-            console.log(`Error converting ${ch} to radix ${radix}: ${e}`);
-            return ch;
-        }
-    });
+    output = apply_radix(output, radix);
 
     // Fill chars in binary mode that length is always 8
     if (radix === 2) {
+        console.log("Binary mode");
+        // Pad with zeros
         output = output.map((e) => "0".repeat(8 - e.length) + e);
     }
 
@@ -56,6 +51,18 @@ function exec_translate() {
     write_output(output);
 }
 
+
+// Apply radix
+function apply_radix(char_array, radix) {
+    return char_array.map((ch) => {
+        try {
+            return ch.toString(radix);
+        } catch (e) {
+            console.log(`Error applying radix ${radix} to char ${ch}: ${e}`);
+            return ch;
+        }
+    });
+}
 
 // Writes `out` to the output elementt
 function write_output(out) {
