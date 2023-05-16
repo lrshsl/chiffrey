@@ -150,7 +150,13 @@ function refresh() {
         .replace(kw_regex(), color_tag("kw"))
 
     gsyn_bg_div.innerHTML = unsubstitute(gsyn_bg_div.innerHTML);
+
 }
+
+// Adapt the size of the editor
+gsyn_editor.addEventListener("change", () => {
+    gsyn_bg_div.style.height = `${gsyn_editor.scrollHeight}px`;
+});
 
 // Prevent tab key from changing the focus
 gsyn_editor.addEventListener('keydown', function(e) {
